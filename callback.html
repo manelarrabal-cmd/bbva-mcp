@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enable Banking Callback</title>
+</head>
+<body>
+    <h1>Enable Banking authorization</h1>
+
+```
+<p id="status">Processing authorization...</p>
+
+<pre id="result"></pre>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+    const error = params.get("error");
+
+    if (code) {
+        document.getElementById("status").textContent =
+            "Authorization code received:";
+
+        document.getElementById("result").textContent = code;
+    } else if (error) {
+        document.getElementById("status").textContent =
+            "Authorization failed:";
+
+        document.getElementById("result").textContent = error;
+    } else {
+        document.getElementById("status").textContent =
+            "No authorization code was received.";
+    }
+</script>
+```
+
+</body>
+</html>
